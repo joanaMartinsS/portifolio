@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio · Joana Martins</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1a3d2b;
+    --green-mid: #2d6a4f;
+    --green-bright: #52b788;
+    --green-light: #b7e4c7;
+    --green-pale: #f0faf4;
+    --cream: #faf9f6;
+    --ink: #1c1c1a;
+    --ink-soft: #4a4a45;
+    --ink-muted: #8a8a82;
+    --border: #dde8e1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--green-deep);
+    color: white;
+    padding: 4rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(82, 183, 136, 0.12);
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 10%;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(82, 183, 136, 0.08);
+  }
+
+  .header-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(82, 183, 136, 0.2);
+    color: var(--green-light);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(82, 183, 136, 0.3);
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+    color: white;
+  }
+
+  .subtitle {
+    color: var(--green-light);
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    opacity: 0.85;
+  }
+
+  .header-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.75);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  /* NAV */
+  nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    gap: 0;
+  }
+
+  .nav-inner a {
+    text-decoration: none;
+    color: var(--ink-muted);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 16px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .nav-inner a:hover {
+    color: var(--green-mid);
+    border-bottom-color: var(--green-bright);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  /* SECTION */
+  section {
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SOBRE */
+  .sobre-text {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .sobre-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+  }
+
+  .skill-chip {
+    background: var(--green-pale);
+    border: 1px solid var(--green-light);
+    color: var(--green-deep);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  /* PROJECTS */
+  .project-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 8px 32px rgba(45, 106, 79, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .project-header {
+    padding: 1.5rem 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .project-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: var(--green-light);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .project-meta {
+    flex: 1;
+  }
+
+  .project-status {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+
+  .status-live {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+  }
+
+  .status-progress {
+    background: #fff8e1;
+    color: #f57f17;
+    border: 1px solid #ffe082;
+  }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+
+  .project-org {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  .project-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  .project-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  .project-section-title {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+  }
+
+  .project-contrib {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--green-light);
+  }
+
+  .project-contrib li {
+    list-style: none;
+    margin-bottom: 4px;
+  }
+
+  .project-contrib li::before {
+    content: '→ ';
+    color: var(--green-bright);
+    font-weight: 500;
+  }
+
+  .project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .tool-tag {
+    background: var(--green-pale);
+    color: var(--green-deep);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--green-light);
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--green-mid);
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid var(--green-light);
+    border-radius: 8px;
+    background: var(--green-pale);
+    transition: all 0.2s;
+  }
+
+  .project-link:hover {
+    background: var(--green-light);
+    color: var(--green-deep);
+  }
+
+  .project-link svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* CONTATO */
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--green-deep);
+    text-decoration: none;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--green-bright);
+    background: var(--green-pale);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 2.5rem 1.25rem 2rem; }
+    main { padding: 2rem 1.25rem; }
+    .project-header { flex-direction: column; gap: 0.5rem; }
+    .project-num { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="badge">Portfólio · Dados & Projetos</div>
+    <h1>Joana Martins</h1>
+    <p class="subtitle">Analista de Dados · Gestão de Projetos · Terceiro Setor</p>
+    <div class="header-tags">
+      <span class="tag">Power BI</span>
+      <span class="tag">Python</span>
+      <span class="tag">Looker Studio</span>
+      <span class="tag">Google Sheets</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Impacto Social</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#sobre">Sobre</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#skills">Skills</a>
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="section-label">Sobre</div>
+    <p class="sobre-text">
+      Trabalho na interseção entre <strong>dados e gestão de projetos</strong> — e é justamente aí que consigo gerar mais valor.
+      No Instituto Phomenta, faço a gestão de projetos que conectam empresas a ONGs. Em paralelo, desenvolvo projetos
+      freelancer com foco em análise e visualização de dados, todos com organizações do terceiro setor.
+      Tenho facilidade com Python, SQL, Power BI, Looker Studio e Google Sheets.
+      <strong>Aprendo rápido e gosto de trabalhar em projetos onde os dados fazem diferença de verdade.</strong>
+    </p>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <div class="section-label">Projetos</div>
+
+    <!-- PROJETO 1 -->
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-num">01</span>
+        <div class="project-meta">
+          <span class="project-status status-live">Publicado</span>
+          <h2 class="project-title">Painel de Projetos de Carbono Florestal</h2>
+          <p class="project-org">IDESAM · Power BI · Georreferenciamento</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">
+          Painel interativo que mapeia e analisa projetos de carbono florestal no mercado voluntário brasileiro,
+          com dados do setor AFOLU (Agricultura, Florestas e Uso do Solo). Permite filtrar por região, status,
+          tipo de certificação e estimar créditos de carbono (VCUs) entre 2020 e 2050.
+        </p>
+        <div class="project-section-title">Contribuições</div>
+        <ul class="project-contrib">
+          <li>Estruturação e design inicial do layout do painel</li>
+          <li>Distribuição e organização das visualizações nas páginas</li>
+          <li>Apoio na lógica de georreferenciamento dos projetos no mapa</li>
+        </ul>
+        <div class="project-tools">
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">Georreferenciamento</span>
+          <span class="tool-tag">Análise ambiental</span>
+          <span class="tool-tag">Mercado de carbono</span>
+        </div>
+        <a href="https://idesam.org/paineis-interativos/painel-projetos-carbono-florestal/" target="_blank" class="project-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver painel ao vivo
+        </a>
+      </div>
+    </div>
+
+    <!-- PROJETO 2 -->
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-num">02</span>
+        <div class="project-meta">
+          <span class="project-status status-progress">Em andamento</span>
+          <h2 class="project-title">Limpeza e Integração de Bases Municipais — APA</h2>
+          <p class="project-org">Área de Preservação Ambiental · Python · Power BI</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">
+          Projeto de tratamento e integração de mais de 10 bases de dados municipais de uma Área de Preservação
+          Ambiental específica. O resultado final será um painel em Power BI com mapa interativo e buscador,
+          permitindo consultar dados ambientais por município de forma acessível.
+        </p>
+        <div class="project-section-title">O que já foi feito</div>
+        <ul class="project-contrib">
+          <li>Limpeza e padronização de 10+ bases com Python (pandas)</li>
+          <li>Tratamento de inconsistências, valores nulos e normalização de campos</li>
+          <li>Estruturação do modelo de dados para integração no Power BI</li>
+        </ul>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">pandas</span>
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">Google Colab</span>
+          <span class="tool-tag">Dados ambientais</span>
+        </div>
+        <a href="https://github.com/joanaMartinsS/limpeza_dados" target="_blank" class="project-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          Ver código no GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- PROJETO 3 -->
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-num">03</span>
+        <div class="project-meta">
+          <span class="project-status status-progress">Em andamento</span>
+          <h2 class="project-title">Dashboard de Monitoramento Institucional</h2>
+          <p class="project-org">Casa Fluminense · Looker Studio · Google Sheets</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">
+          Projeto de arquitetura de dados e visualização para monitoramento da saúde financeira e de captação
+          de uma organização do terceiro setor. A base estruturada no Google Sheets alimenta um dashboard
+          no Looker Studio com indicadores de diversificação de receita, relacionamento com financiadores e
+          engajamento em campanhas.
+        </p>
+        <div class="project-section-title">Arquitetura da base de dados</div>
+        <ul class="project-contrib">
+          <li>15+ abas organizadas por tema: financeiro, captação, comunicação, programático</li>
+          <li>Abas auxiliares e dicionário de dados para padronização</li>
+          <li>Estrutura preparada para conectar diretamente ao Looker Studio</li>
+        </ul>
+        <div class="project-tools">
+          <span class="tool-tag">Looker Studio</span>
+          <span class="tool-tag">Google Sheets</span>
+          <span class="tool-tag">Arquitetura de dados</span>
+          <span class="tool-tag">Terceiro setor</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-chip">Power BI</div>
+      <div class="skill-chip">Looker Studio</div>
+      <div class="skill-chip">Python</div>
+      <div class="skill-chip">pandas</div>
+      <div class="skill-chip">SQL</div>
+      <div class="skill-chip">Google Sheets</div>
+      <div class="skill-chip">Make (Integromat)</div>
+      <div class="skill-chip">Google Colab</div>
+      <div class="skill-chip">Gestão de Projetos</div>
+      <div class="skill-chip">Visualização de dados</div>
+      <div class="skill-chip">Limpeza de dados</div>
+      <div class="skill-chip">Georreferenciamento</div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="section-label">Contato</div>
+    <div class="contact-row">
+      <a href="mailto:joana.martins0514@gmail.com" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+        joana.martins0514@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/joana-martins-santos" target="_blank" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/joanaMartinsS" target="_blank" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Joana Martins · Dados & Projetos · 2025
+</footer>
+
+</body>
+</html>
